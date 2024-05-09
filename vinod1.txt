@@ -1,0 +1,60 @@
+def insert_linearprobing(data,size,hashtable):
+    key=data[0]%size
+    while hashtable[key]!=-1:
+        key=(key+1)%size
+    else:
+        hashtable[key]=data
+        
+def insert_doublehashing(data,size,hashtable,m):
+    pos=data[0]%size
+    while hashtable[pos] != -1:
+        pos=m-(data[0]%m)
+    else:
+        hashtable[pos]=data
+        
+ht=[]
+ht_size=10
+for i in range(ht_size):
+    ht.append(-1)
+    
+method=int(input("1) linearprobing \n  2) double hashing \n"))
+
+if method==1:
+    while True:
+        print("1) insert \n 2) dsiplay \n 3) exit \n")
+        ch=int(input("enter your choice:"))
+        
+        if ch==1:
+            num=int(input("enter clients no:"))
+            name=input("enter clients name:")
+            data=[num,name]
+            insert_linearprobing(data,ht_size,ht)
+            
+        elif ch==2:
+            for j in range(ht_size):
+                print(j,ht[j])
+                
+                
+        elif ch==3:
+            print("thank u")
+            break
+        
+if method==2:
+    while True:
+        print("1) insert \n 2) dsiplay \n 3) exit \n")
+        ch=int(input("enter your choice:"))
+        
+        if ch==1:
+            num=int(input("enter clients no:"))
+            name=input("enter clients name:")
+            data=[num,name]
+            insert_doublehashing(data,ht_size,ht,7)
+            
+        elif ch==2:
+            for j in range(ht_size):
+                print(j,ht[j])
+                
+                
+        elif ch==3:
+            print("thank u")
+            break
